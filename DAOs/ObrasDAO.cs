@@ -14,19 +14,19 @@ namespace iBookApi.DAOs
 
         public long InserirObra(obraDTO obra)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
-                conn.Open();
-                return conn.Insert(obra);
+                connection.Open();
+                return connection.Insert(obra);
             }
         }
 
         public void AtualizarObra(obraDTO obra)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
-                conn.Open();
-                conn.Update(obra);
+                connection.Open();
+                connection.Update(obra);
             }
         }
 
@@ -36,8 +36,7 @@ namespace iBookApi.DAOs
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                var teste = connection.Query<obraDTO>("Select * from OBRAS Where id = @obraId", new { obraId = obraId }).FirstOrDefault();
-                return teste;
+                return connection.Query<obraDTO>("Select * from OBRAS Where id = @obraId", new { obraId = obraId }).FirstOrDefault(); ;
             }
         }
 
@@ -53,10 +52,10 @@ namespace iBookApi.DAOs
 
         public void DeletarObra(obraDTO obra)
         {
-            using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
-                conn.Open();
-                conn.Delete<obraDTO>(obra);
+                connection.Open();
+                connection.Delete<obraDTO>(obra);
             }
         }
 

@@ -34,7 +34,7 @@ namespace iBookApi.Controllers
         //[HttpPost]
         //public async Task<ActionResult<Usuario>> Autenticar([FromBody] Usuario usuario)
         //{
-           
+
 
         //}
 
@@ -55,7 +55,7 @@ namespace iBookApi.Controllers
         //[HttpPost]
         //public async Task<ActionResult<Usuario>> AlterarUsuario(string email, string pass)
         //{
-            
+
         //}
 
         //[Route("ConsultarPorEmail")]

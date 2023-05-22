@@ -6,21 +6,21 @@ namespace mysqlAPI.DTOs
     public class obraDTO
     {
         [Key]
-        private int id { get; set; }
-        private string title { get; set; }
-        private string? subtitle { get; set; }
-        private string? synopsis { get; set; }
-        private string? author { get; set; }
-        private string? editora { get; set; }
-        private DateTime? dataPublicacao { get; set; }
-        private DateTime? dataFinalizacao { get; set; }
-        private string? isbn { get; set; }
-        private int? paginas { get; set; }
-        private string? image { get; set; }
-        private string? traducao { get; set; }
-        private string? tipo { get; set; }
-        private float? avarageRating { get; set; }
-        private string? statusObra { get; set; }
-        private string? categorias { get; set; }
+        public int id { get; set; }
+        public string title { get; set; }
+        public string? subtitle { get; set; }
+        public string? synopsis { get; set; }
+        public string? author { get; set; }
+        public string? editora { get; set; }
+        public DateTime? dataPublicacao { get; set; }
+        public DateTime? dataFinalizacao { get; set; }
+        public string? isbn { get; set; }
+        public int? paginas { get; set; }
+        public string? image { get; set; }
+        public string? traducao { get; set; }
+        public string? tipo { get; set; }
+        public float? avarageRating { get; set; }
+        public string? statusObra { get; set; }
+        public string? categorias { get; set; }
     }
 }

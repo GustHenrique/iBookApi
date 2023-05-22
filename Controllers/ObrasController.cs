@@ -10,9 +10,7 @@ namespace iBookApi.Controllers
         [Route("TodasObras")]
         public List<obraDTO> GetObras()
         {
-            List<obraDTO> lista = new List<obraDTO>();
-            lista = new ObrasDAO().ConsultarAllObras();
-            return lista;
+            return new ObrasDAO().ConsultarAllObras();
         }
 
         [HttpGet]
@@ -20,6 +18,27 @@ namespace iBookApi.Controllers
         public obraDTO GetObra([FromQuery] int ObraID)
         {
             return new ObrasDAO().ConsultarObra(ObraID);
+        }
+
+        [HttpPost]
+        [Route("AdicionarObra")]
+        public void PostObra([FromQuery] obraDTO Obra)
+        {
+            new ObrasDAO().InserirObra(Obra);
+        }
+
+        [HttpPut]
+        [Route("AtualizarObra")]
+        public void PutObra([FromQuery] obraDTO Obra)
+        {
+            new ObrasDAO().AtualizarObra(Obra);
+        }
+
+        [HttpDelete]
+        [Route("DeletarObra")]
+        public void DeleteObra([FromQuery] obraDTO Obra)
+        {
+            new ObrasDAO().DeletarObra(Obra);
         }
     }
 }
