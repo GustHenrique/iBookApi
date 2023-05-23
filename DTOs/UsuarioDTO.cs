@@ -3,7 +3,7 @@
 namespace mysqlAPI.DTOs
 {
     [Table("USUARIO")]
-    public class Usuario
+    public class UsuarioDTO
     {
         [Key]
         public decimal USUID { get; set; }

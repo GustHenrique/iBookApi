@@ -4,6 +4,8 @@ using mysqlAPI.DTOs;
 
 namespace iBookApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ObrasController : Controller
     {
         [HttpGet]
@@ -25,6 +27,13 @@ namespace iBookApi.Controllers
         public void PostObra([FromQuery] obraDTO Obra)
         {
             new ObrasDAO().InserirObra(Obra);
+        }
+
+        [HttpPost]
+        [Route("AdicionarListaObra")]
+        public void PostListObra([FromQuery] List<obraDTO> Obra)
+        {
+            new ObrasDAO().InserirListObra(Obra);
         }
 
         [HttpPut]

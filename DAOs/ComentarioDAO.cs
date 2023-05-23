@@ -6,33 +6,39 @@ using System.Data.SqlClient;
 
 namespace iBookApi.DAOs
 {
-    public class ObrasDAO : BaseDAO
+    public class ComentarioDAO : BaseDAO
     {
-        public ObrasDAO() : base()
+        public ComentarioDAO() : base()
         {
         }
 
-
-        public obraDTO ConsultarObra(int obraId)
+        public List<comentarioDTO> ConsultarAllComentariosPorObra(int obid)
         {
-
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<obraDTO>("Select * from OBRAS Where id = @obraId", new { obraId = obraId }).FirstOrDefault(); ;
+                return connection.Query<comentarioDTO>("Select * from COMENTARIOS Where obid = @obid", new { obid = obid }).ToList();
             }
         }
 
-        public List<obraDTO> ConsultarAllObras()
+        public List<comentarioDTO> ConsultarAllComentariosPorUsu(int usuid)
         {
-            string _sql = "Select * from OBRAS";
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<obraDTO>(_sql).ToList();
+                return connection.Query<comentarioDTO>("Select * from COMENTARIOS Where usuid = @usuid", new { usuid = usuid }).ToList();
             }
         }
-        public long InserirObra(obraDTO obra)
+
+        public List<respostaDTO> ConsultarAllRespostasComentario(int comid)
+        {
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<respostaDTO>("Select * from RESPOSTA Where comid = @comid", new { obcomidid = comid }).ToList();
+            }
+        }
+        public long InserirComentario(comentarioDTO obra)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
@@ -41,22 +47,7 @@ namespace iBookApi.DAOs
             }
         }
 
-        public void InserirListObra(List<obraDTO> obras)
-        {
-            if (obras != null)
-            {
-                using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
-                {
-                    foreach (var obra in obras)
-                    {
-                        connection.Open();
-                        connection.Insert(obra);
-                    }
-                }
-            }
-        }
-
-        public void AtualizarObra(obraDTO obra)
+        public void AtualizarComentario(comentarioDTO obra)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
@@ -65,14 +56,15 @@ namespace iBookApi.DAOs
             }
         }
 
-        public void DeletarObra(obraDTO obra)
+        public void DeletarComentario(comentarioDTO obra)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                connection.Delete<obraDTO>(obra);
+                connection.Delete<comentarioDTO>(obra);
             }
         }
+
 
     }
 }

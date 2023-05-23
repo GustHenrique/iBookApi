@@ -13,7 +13,7 @@ namespace iBookApi.DAOs
         {
         }
 
-        public long InserirUsuario(Usuario usuario)
+        public long InserirUsuario(UsuarioDTO usuario)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
@@ -22,7 +22,7 @@ namespace iBookApi.DAOs
             }
         }
 
-        public void AtualizarUsuario(Usuario usuario)
+        public void AtualizarUsuario(UsuarioDTO usuario)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
@@ -31,52 +31,61 @@ namespace iBookApi.DAOs
             }
         }
 
-        public Usuario ConsultarUsuario(decimal UsuarioId)
+        public UsuarioDTO ConsultarUsuario(int id)
         {
 
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<Usuario>("Select * from USUARIO Where USUID = @usuId", new { usuId = UsuarioId }).FirstOrDefault();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO Where id = @id", new { id = id }).FirstOrDefault();
             }
         }
 
-        public Usuario ConsultarUsuarioPorEmail(string Email)
+        public UsuarioDTO ConsultarUsuarioPorEmail(string Email)
         {
 
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<Usuario>("Select * from USUARIO with(nolock) Where USUEMAIL = @email", new { email = Email }).FirstOrDefault();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO Where USUEMAIL = @email", new { email = Email }).FirstOrDefault();
             }
         }
 
-        public Usuario AutenticarUsuario(string UsuLogin, string UsuSenha)
+        public UsuarioDTO AutenticarUsuario(string email, string senha)
         {
 
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<Usuario>("Select * from USUARIO with(nolock) Where USULOGIN = @UsuLogin And USUSENHA=@UsuSenha", new { UsuLogin, UsuSenha }).FirstOrDefault();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO Where email = @email And senha=@senha", new { email, senha }).FirstOrDefault();
             }
         }
-        public Usuario RecuperarUsuario(string UsuLogin, string UsuSenha)
+        public UsuarioDTO RecuperarUsuario(string email)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<Usuario>("update USUARIO set USUSENHA=@UsuSenha Where USUEMAIL = @UsuLogin And USUATIVO = 1", new { UsuLogin, UsuSenha }).FirstOrDefault();
+                return connection.Query<UsuarioDTO>("update USUARIO set senha=@senha Where email = @email", new { email }).FirstOrDefault();
 
             }
         }
 
-        public Usuario AlterarSenhaUsuario(string UsuId, string UsuSenha, string UsuSenhaNova)
+        public UsuarioDTO AlterarSenhaUsuario(string id, string senha, string senhaNova)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<Usuario>("update USUARIO set USUSENHA=@UsuSenhaNova Where USUSENHA= @UsuSenha And usuId = @usuId And USUATIVO = 1", new { UsuId, UsuSenha, UsuSenhaNova }).FirstOrDefault();
+                return connection.Query<UsuarioDTO>("update USUARIO set senha=@senhaNova Where senha= @senha And id = @id", new { id, senha, senhaNova }).FirstOrDefault();
 
+            }
+        }
+
+        public void BanirUsuario(UsuarioDTO usuario)
+        {
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                connection.Delete<UsuarioDTO>(usuario);
             }
         }
     }
