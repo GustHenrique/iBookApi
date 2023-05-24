@@ -12,7 +12,7 @@ namespace iBookApi.DAOs
         {
             string json = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "ConfiguracoesAcessos.json");
             Configuracoes configuracoes = JsonConvert.DeserializeObject<Configuracoes>(json);
-            ConnectionString = "Server=" + configuracoes.DataSource + ";Port=3306;Database=" + configuracoes.InitialCatalog + ";Uid=" + configuracoes.InitialCatalog + ";Pwd=" + configuracoes.InitialCatalog + ";";
+            ConnectionString = "Server=" + configuracoes.DataSource + ";Port=3306;Database=" + configuracoes.InitialCatalog + ";Uid=" + configuracoes.UserId + ";Pwd=" + configuracoes.Password + ";";
         }
     }
     public class Configuracoes
