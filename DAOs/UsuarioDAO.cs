@@ -13,6 +13,36 @@ namespace iBookApi.DAOs
         {
         }
 
+        public UsuarioDTO ConsultarUsuario(int id)
+        {
+
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO Where id = @id", new { id = id }).FirstOrDefault();
+            }
+        }
+
+        public List<UsuarioDTO> ConsultarAllUsuarios()
+        {
+
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO").ToList();
+            }
+        }
+
+        public UsuarioDTO ConsultarUsuarioPorEmail(string Email)
+        {
+
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO Where USUEMAIL = @email", new { email = Email }).FirstOrDefault();
+            }
+        }
+
         public long InserirUsuario(UsuarioDTO usuario)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
@@ -28,26 +58,6 @@ namespace iBookApi.DAOs
             {
                 connection.Open();
                 connection.Update(usuario);
-            }
-        }
-
-        public UsuarioDTO ConsultarUsuario(int id)
-        {
-
-            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
-            {
-                connection.Open();
-                return connection.Query<UsuarioDTO>("Select * from USUARIO Where id = @id", new { id = id }).FirstOrDefault();
-            }
-        }
-
-        public UsuarioDTO ConsultarUsuarioPorEmail(string Email)
-        {
-
-            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
-            {
-                connection.Open();
-                return connection.Query<UsuarioDTO>("Select * from USUARIO Where USUEMAIL = @email", new { email = Email }).FirstOrDefault();
             }
         }
 

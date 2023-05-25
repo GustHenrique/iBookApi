@@ -16,6 +16,14 @@ namespace iBookApi.Controllers
             return new UsuarioDAO().ConsultarUsuario(UsuId);
         }
 
+        [HttpGet]
+        [Route("TodosUsuarios")]
+        public List<UsuarioDTO> GetAllUsuarios()
+        {
+            return new UsuarioDAO().ConsultarAllUsuarios();
+        }
+
+
         [HttpPost]
         [Route("CadastrarUsuario")]
         public void PostObra([FromQuery] UsuarioDTO usuario)

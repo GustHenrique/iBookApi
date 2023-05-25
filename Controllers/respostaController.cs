@@ -15,6 +15,15 @@ namespace iBookApi.Controllers
             return new RespostaDAO().ConsultarAllRespostasPorComentario(comid);
         }
 
+
+        [HttpGet]
+        [Route("TodosRespostas")]
+        public List<respostaDTO> GetAllRespostas()
+        {
+            return new RespostaDAO().ConsultarAllRespostas();
+        }
+
+
         [HttpGet]
         [Route("TodosRespostasUsu/{usuid}")]
         public List<respostaDTO> GetRespostasPorUsu(int usuid)

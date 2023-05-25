@@ -16,6 +16,13 @@ namespace iBookApi.Controllers
         }
 
         [HttpGet]
+        [Route("TodosComentarios")]
+        public List<comentarioDTO> GetAllComentarios()
+        {
+            return new ComentarioDAO().ConsultarAllComentarios();
+        }
+
+        [HttpGet]
         [Route("TodosComentariosUsu/{usuid}")]
         public List<comentarioDTO> GetComentarioPorUsu(int usuid)
         {

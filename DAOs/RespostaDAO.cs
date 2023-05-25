@@ -12,6 +12,15 @@ namespace iBookApi.DAOs
         {
         }
 
+        public List<respostaDTO> ConsultarAllRespostas()
+        {
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<respostaDTO>("Select * from RESPOSTAS").ToList();
+            }
+        }
+
         public List<respostaDTO> ConsultarAllRespostasPorComentario(int comid)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
