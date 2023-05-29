@@ -26,21 +26,21 @@ namespace iBookApi.Controllers
 
         [HttpPost]
         [Route("CadastrarUsuario")]
-        public void PostObra([FromQuery] UsuarioDTO usuario)
+        public void PostObra([FromBody] UsuarioDTO usuario)
         {
             new UsuarioDAO().InserirUsuario(usuario);
         }
 
         [HttpPost]
         [Route("Autenticar")]
-        public UsuarioDTO AutenticarUsuario([FromQuery] string email, string senha)
+        public UsuarioDTO AutenticarUsuario(string email, string senha)
         {
             return new UsuarioDAO().AutenticarUsuario(email, senha);
         }
 
         [HttpPut]
         [Route("AtualizarUsuario")]
-        public void PutObra([FromQuery] UsuarioDTO usuario)
+        public void PutObra([FromBody] UsuarioDTO usuario)
         {
             new UsuarioDAO().AtualizarUsuario(usuario);
         }
@@ -53,10 +53,10 @@ namespace iBookApi.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteUsuario/{usuid}")]
-        public void RecuperarUsuario([FromQuery] UsuarioDTO usuario)
+        [Route("DeleteUsuario")]
+        public void RecuperarUsuario([FromQuery] int usuid)
         {
-            new UsuarioDAO().BanirUsuario(usuario);
+            new UsuarioDAO().BanirUsuario(usuid);
         }
 
 

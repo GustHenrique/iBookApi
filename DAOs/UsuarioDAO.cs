@@ -86,16 +86,15 @@ namespace iBookApi.DAOs
             {
                 connection.Open();
                 return connection.Query<UsuarioDTO>("update USUARIO set senha=@senhaNova Where senha= @senha And id = @id", new { id, senha, senhaNova }).FirstOrDefault();
-
             }
         }
 
-        public void BanirUsuario(UsuarioDTO usuario)
+        public void BanirUsuario(int id)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                connection.Delete<UsuarioDTO>(usuario);
+                connection.Query<UsuarioDTO>("DELETE FROM USUARIO WHERE id = @id", new { id }).FirstOrDefault();
             }
         }
     }
