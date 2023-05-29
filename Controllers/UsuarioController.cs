@@ -23,6 +23,13 @@ namespace iBookApi.Controllers
             return new UsuarioDAO().ConsultarAllUsuarios();
         }
 
+        [HttpGet]
+        [Route("UsuarioPorEmail")]
+        public UsuarioDTO GetUsuarioPorEmail(string email)
+        {
+            return new UsuarioDAO().ConsultarUsuarioPorEmail(email);
+        }
+
 
         [HttpPost]
         [Route("CadastrarUsuario")]
