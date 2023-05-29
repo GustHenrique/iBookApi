@@ -39,7 +39,7 @@ namespace iBookApi.DAOs
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<UsuarioDTO>("Select * from USUARIO Where USUEMAIL = @email", new { email = Email }).FirstOrDefault();
+                return connection.Query<UsuarioDTO>("Select * from USUARIO Where email = @email", new { email = Email }).FirstOrDefault();
             }
         }
 
