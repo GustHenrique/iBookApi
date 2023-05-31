@@ -24,7 +24,7 @@ namespace iBookApi.Controllers
 
         [HttpPost]
         [Route("AdicionarObra")]
-        public void PostObra([FromQuery] obraDTO Obra)
+        public void PostObra([FromBody] obraDTO Obra)
         {
             new ObrasDAO().InserirObra(Obra);
         }
