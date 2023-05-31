@@ -33,21 +33,21 @@ namespace iBookApi.Controllers
 
         [HttpPost]
         [Route("AdicionarComentario")]
-        public void PostAddComentario([FromQuery] respostaDTO comentario)
+        public void PostAddComentario([FromBody] respostaDTO comentario)
         {
             new RespostaDAO().InserirResposta(comentario);
         }
 
         [HttpPut]
         [Route("AtualizarComentario")]
-        public void PutAttComentario([FromQuery] respostaDTO comentario)
+        public void PutAttComentario([FromBody] respostaDTO comentario)
         {
             new RespostaDAO().AtualizarResposta(comentario);
         }
 
         [HttpDelete]
         [Route("DeletarComentario")]
-        public void DeleteComentario([FromQuery] respostaDTO comentario)
+        public void DeleteComentario([FromBody] respostaDTO comentario)
         {
             new RespostaDAO().DeletarResposta(comentario);
         }

@@ -54,14 +54,14 @@ namespace iBookApi.Controllers
 
         [HttpPost]
         [Route("AlterarSenha/{email}")]
-        public void RecuperarUsuario([FromQuery] string email)
+        public void RecuperarUsuario([FromBody] string email)
         {
             new UsuarioDAO().RecuperarUsuario(email);
         }
 
         [HttpDelete]
         [Route("DeleteUsuario")]
-        public void RecuperarUsuario([FromQuery] int usuid)
+        public void RecuperarUsuario([FromBody] int usuid)
         {
             new UsuarioDAO().BanirUsuario(usuid);
         }

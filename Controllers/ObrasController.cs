@@ -31,21 +31,21 @@ namespace iBookApi.Controllers
 
         [HttpPost]
         [Route("AdicionarListaObra")]
-        public void PostListObra([FromQuery] List<obraDTO> Obra)
+        public void PostListObra([FromBody] List<obraDTO> Obra)
         {
             new ObrasDAO().InserirListObra(Obra);
         }
 
         [HttpPut]
         [Route("AtualizarObra")]
-        public void PutObra([FromQuery] obraDTO Obra)
+        public void PutObra([FromBody] obraDTO Obra)
         {
             new ObrasDAO().AtualizarObra(Obra);
         }
 
         [HttpDelete]
         [Route("DeletarObra")]
-        public void DeleteObra([FromQuery] obraDTO Obra)
+        public void DeleteObra([FromBody] obraDTO Obra)
         {
             new ObrasDAO().DeletarObra(Obra);
         }
