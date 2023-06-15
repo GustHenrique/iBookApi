@@ -10,6 +10,7 @@ namespace mysqlAPI.DTOs
         public int usuid { get; set; }
         public int obid { get; set; }
         public string comentario { get; set; }
-        public List<respostaDTO> respostas { get; set; }
+        public DateTime dataComentario { get; set; }
+        //public List<respostaDTO> respostas { get; set; }
     }
 }
