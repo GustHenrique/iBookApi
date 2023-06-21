@@ -30,7 +30,7 @@ namespace iBookApi.Controllers
         }
 
         [HttpPost]
-        [Route("AdicionarComentario")]
+        [Route("AdicionarFavorito")]
         public void PostAddFavorito([FromBody] favoritosDTO favorito)
         {
             new FavoritosDAO().InserirFavorito(favorito);
