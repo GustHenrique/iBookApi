@@ -19,7 +19,7 @@ namespace iBookApi.DAOs
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                return connection.Query<obraDTO>("Select * from OBRAS Where id = @obraId", new { obraId = obraId }).FirstOrDefault(); ;
+                return connection.Query<obraDTO>("Select * from OBRAS Where id = @obraId", new { obraId = obraId }).FirstOrDefault();
             }
         }
 
