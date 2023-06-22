@@ -38,9 +38,9 @@ namespace iBookApi.Controllers
 
         [HttpDelete]
         [Route("DeletarFavorito")]
-        public void DeleteFavorito([FromQuery] favoritosDTO favorito)
+        public void DeleteFavorito([FromQuery] int usuid, [FromQuery] int obid)
         {
-            new FavoritosDAO().DeletarFavorito(favorito);
+            new FavoritosDAO().DeletarFavorito(usuid, obid);
         }
     }
 }

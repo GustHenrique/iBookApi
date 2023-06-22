@@ -47,12 +47,12 @@ namespace iBookApi.DAOs
                 return connection.Insert(obra);
             }
         }
-        public void DeletarFavorito(favoritosDTO obra)
+        public void DeletarFavorito(int usuid, int obid)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
             {
                 connection.Open();
-                connection.Delete<favoritosDTO>(obra);
+                connection.Query<favoritosDTO>("DELETE FROM OBRAS_FAVORITAS Where obid = @obid AND usuid = @usuid", new { obid = obid, usuid = usuid });
             }
         }
     }
