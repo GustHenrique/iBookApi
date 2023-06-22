@@ -49,6 +49,7 @@ namespace iBookApi.Controllers
         [Route("DeletarComentario")]
         public void DeleteComentario([FromBody] respostaDTO comentario)
         {
+            //puxou
             new RespostaDAO().DeletarResposta(comentario);
         }
     }
