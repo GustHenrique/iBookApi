@@ -43,6 +43,13 @@ namespace iBookApi.Controllers
             new ObrasDAO().AtualizarObra(Obra);
         }
 
+        [HttpPut]
+        [Route("AvaliarObra")]
+        public void PutObra([FromQuery] int obid, [FromQuery] float avarageRating)
+        {
+            new ObrasDAO().AvaliarObra(obid,avarageRating);
+        }
+
         [HttpDelete]
         [Route("DeletarObra")]
         public void DeleteObra([FromBody] obraDTO Obra)

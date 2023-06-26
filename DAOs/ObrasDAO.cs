@@ -32,6 +32,16 @@ namespace iBookApi.DAOs
                 return connection.Query<obraDTO>(_sql).ToList();
             }
         }
+
+        public void AvaliarObra(int obraId, float avarageRating)
+        {
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                connection.Execute("UPDATE OBRAS SET avarageRating = @avarageRating WHERE id = @obraId;", new { obraId = obraId, avarageRating = avarageRating });
+            }
+        }
+
         public long InserirObra(obraDTO obra)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
