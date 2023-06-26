@@ -28,5 +28,12 @@ namespace iBookApi.Controllers
         {
             new AvaliacaoDAO().InserirAvaliacao(avaliacao);
         }
+
+        [HttpPost]
+        [Route("AtualizarAvaObra")]
+        public void PutObra([FromQuery] int usuid, [FromQuery] int obid, [FromQuery] float avarageRating)
+        {
+            new AvaliacaoDAO().AtualizarAvaObra(usuid, obid, avarageRating);
+        }
     }
 }

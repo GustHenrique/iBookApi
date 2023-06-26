@@ -39,23 +39,13 @@ namespace iBookApi.DAOs
             }
         }
 
-
-        //public List<avaliacaoDTO> ConsultarAllFavoritosPorUsu(int usuid)
-        //{
-        //    using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
-        //    {
-        //        connection.Open();
-        //        return connection.Query<avaliacaoDTO>("Select * from AVALIACOES Where usuid = @usuid", new { usuid = usuid }).ToList();
-        //    }
-        //}
-
-        //public void DeletarFavorito(favoritoDTO favorito)
-        //{
-        //    using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
-        //    {
-        //        connection.Open();
-        //        connection.Query<favoritoDTO>("DELETE FROM AVALIACOES Where obid = @obid AND usuid = @usuid", new { obid = favorito.obid, usuid = favorito.usuid}).FirstOrDefault();
-        //    }
-        //}
+        public void AtualizarAvaObra(int usuid, int obraId, float avarageRating)
+        {
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                connection.Execute("UPDATE AVALIACOES SET AVALIACAO = @avarageRating WHERE obid = @obraId AND usuid = @usuid;", new { obraId = obraId, avarageRating = avarageRating, usuid = usuid });
+            }
+        }
     }
 }
