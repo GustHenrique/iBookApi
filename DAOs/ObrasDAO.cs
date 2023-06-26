@@ -33,6 +33,24 @@ namespace iBookApi.DAOs
             }
         }
 
+        public List<obraDTO> ConsultarObrasMaisComentadasSemana()
+        {
+            DateTime today = DateTime.Today;
+            int daysUntilSunday = (int)today.DayOfWeek - (int)DayOfWeek.Sunday;
+            DateTime startOfWeek = today.AddDays(-daysUntilSunday);
+
+            string startOfWeekString = startOfWeek.ToString("yyyy-MM-dd");
+            string endOfWeekString = startOfWeek.AddDays(6).ToString("yyyy-MM-dd");
+
+            string _sql = $"SELECT O.*, COUNT(C.obid) AS totalComentarios FROM OBRAS O LEFT JOIN COMENTARIOS C ON O.id = C.obid WHERE C.dataComentario >= '{startOfWeekString}' AND C.dataComentario <= '{endOfWeekString}' GROUP BY O.id ORDER BY totalComentarios DESC;";
+
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<obraDTO>(_sql).ToList();
+            }
+        }
+
         public void AvaliarObra(int obraId, float avarageRating)
         {
             using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
@@ -41,6 +59,7 @@ namespace iBookApi.DAOs
                 connection.Execute("UPDATE OBRAS SET avarageRating = @avarageRating WHERE id = @obraId;", new { obraId = obraId, avarageRating = avarageRating });
             }
         }
+
 
         public long InserirObra(obraDTO obra)
         {

@@ -22,6 +22,13 @@ namespace iBookApi.Controllers
             return new ObrasDAO().ConsultarObra(ObraID);
         }
 
+        [HttpGet]
+        [Route("ObrasMaisComentadasSemana")]
+        public List<obraDTO> GetObra()
+        {
+            return new ObrasDAO().ConsultarObrasMaisComentadasSemana();
+        }
+
         [HttpPost]
         [Route("AdicionarObra")]
         public void PostObra([FromBody] obraDTO Obra)
