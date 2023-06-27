@@ -23,6 +23,13 @@ namespace iBookApi.Controllers
         }
 
         [HttpGet]
+        [Route("UmaObraPorUsuario")]
+        public obraDTO GetObraUsu([FromQuery] int usuid)
+        {
+            return new ObrasDAO().ConsultarObraPorUsu(usuid);
+        }
+
+        [HttpGet]
         [Route("ObrasMaisComentadasSemana")]
         public List<obraDTO> GetObra()
         {

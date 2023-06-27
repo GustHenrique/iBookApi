@@ -23,6 +23,16 @@ namespace iBookApi.DAOs
             }
         }
 
+        public obraDTO ConsultarObraPorUsu(int usuid)
+        {
+
+            using (MySqlConnection connection = new MySqlConnection(this.ConnectionString))
+            {
+                connection.Open();
+                return connection.Query<obraDTO>("Select * from OBRAS Where usuid = @usuid", new { usuid = usuid }).FirstOrDefault();
+            }
+        }
+
         public List<obraDTO> ConsultarAllObras()
         {
             string _sql = "Select * from OBRAS";

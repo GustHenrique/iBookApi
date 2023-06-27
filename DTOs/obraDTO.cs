@@ -22,5 +22,6 @@ namespace mysqlAPI.DTOs
         public float? avarageRating { get; set; }
         public string? statusObra { get; set; }
         public string? categorias { get; set; }
+        public int? usuid { get; set; }
     }
 }
