@@ -45,7 +45,7 @@ namespace iBookApi.Controllers
             return new UsuarioDAO().AutenticarUsuario(email, senha);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("AtualizarUsuario")]
         public void PutObra([FromBody] UsuarioDTO usuario)
         {
