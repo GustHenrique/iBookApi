@@ -24,7 +24,7 @@ namespace iBookApi.Controllers
 
         [HttpGet]
         [Route("UmaObraPorUsuario")]
-        public obraDTO GetObraUsu([FromQuery] int usuid)
+        public List<obraDTO> GetObraUsu([FromQuery] int usuid)
         {
             return new ObrasDAO().ConsultarObraPorUsu(usuid);
         }
