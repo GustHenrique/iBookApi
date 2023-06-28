@@ -36,9 +36,16 @@ namespace iBookApi.Controllers
             new FavoritosDAO().InserirFavorito(favorito);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeletarFavorito")]
         public void DeleteFavorito([FromBody] favoritoDTO favorito)
+        {
+            new FavoritosDAO().DeletarFavorito(favorito);
+        }
+
+        [HttpDelete]
+        [Route("DeletarFavoritoDelete")]
+        public void DeleteFavoritoDelete([FromBody] favoritoDTO favorito)
         {
             new FavoritosDAO().DeletarFavorito(favorito);
         }
