@@ -19,12 +19,12 @@ namespace iBookApi.Controllers
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://api.mailgun.net/v3/sandboxe42673bdccef4e018777e9d18a2b8441.mailgun.org");
+                client.BaseAddress = new Uri("https://api.mailgun.net/v3/sandboxb55da31b409a43a5b6636e7b4f0133ce.mailgun.org");
                 client.DefaultRequestHeaders.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Basic",
-                        Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes("api:9b214f15626e89d93b215da7dd6b4e93-e5475b88-e92c7c93")));
+                        Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes("api:94874e7ca0ca69b9af5851f7764861d1-e5475b88-28c56cd3")));
 
-                string domain = "sandboxe42673bdccef4e018777e9d18a2b8441.mailgun.org";
+                string domain = "sandboxb55da31b409a43a5b6636e7b4f0133ce.mailgun.org";
                 string from = "iBook <suporteibookoficial@gmail.com>";
                 string to1 = "gust.leles2@gmail.com";
                 string subject = "Recuperação de senha iBook";
