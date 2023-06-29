@@ -26,7 +26,7 @@ namespace iBookApi.Controllers
 
                 string domain = "sandboxb55da31b409a43a5b6636e7b4f0133ce.mailgun.org";
                 string from = "iBook <suporteibookoficial@gmail.com>";
-                string to1 = "gust.leles2@gmail.com";
+                string to1 = "gusthenrique273@sempreceub.com";
                 string subject = "Recuperação de senha iBook";
                 string text = "Querido " + name + ",\n" +
                                 "\n" +
