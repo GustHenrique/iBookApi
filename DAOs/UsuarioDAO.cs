@@ -4,6 +4,8 @@ using Dapper.Contrib.Extensions;
 using System.Data;
 using System.Data.SqlClient;
 using MySqlConnector;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace iBookApi.DAOs
 {
